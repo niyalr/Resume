@@ -16,8 +16,8 @@ RUN pip install --no-cache-dir -r requirement.txt sentence-transformers
 # Copy the rest of the application files
 COPY . .
 
-# Expose port 8000 (standard for FastAPI, though overridden by PORT env var)
-EXPOSE 8000
+# Expose port 7860 (Hugging Face Spaces default port)
+EXPOSE 7860
 
-# Start Uvicorn, dynamically binding to the port assigned by the host (defaulting to 8000)
-CMD sh -c "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}"
+# Start Uvicorn, dynamically binding to the port (defaulting to 7860 for Hugging Face)
+CMD sh -c "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-7860}"
